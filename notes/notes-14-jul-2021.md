@@ -1,86 +1,65 @@
 # 14-jul-2021
 
-### 3 - min heap implementation
+### 3 - max heap implementation
 
 ```python
- #gfg 
-import sys
- 
-class MinHeap:
- 
-    def __init__(self, maxsize):
-        self.maxsize = maxsize
-        self.size = 0
-        self.Heap = [0]*(self.maxsize + 1)
-        self.Heap[0] = -1 * sys.maxsize
-        self.FRONT = 1
- 
-    
-    def parent(self, pos):
-        return pos//2
- 
-    
-    def leftChild(self, pos):
-        return 2 * pos
- 
-   
-    def rightChild(self, pos):
-        return (2 * pos) + 1
- 
-    
-    def isLeaf(self, pos):
-        if pos >= (self.size//2) and pos <= self.size:
-            return True
-        return False
- 
-    
-    def swap(self, fpos, spos):
-        self.Heap[fpos], self.Heap[spos] = self.Heap[spos], self.Heap[fpos]
- 
-    def minHeapify(self, pos):
- 
-        
-        if not self.isLeaf(pos):
-            if (self.Heap[pos] > self.Heap[self.leftChild(pos)] or
-               self.Heap[pos] > self.Heap[self.rightChild(pos)]):
- 
-                
-                if self.Heap[self.leftChild(pos)] < self.Heap[self.rightChild(pos)]:
-                    self.swap(pos, self.leftChild(pos))
-                    self.minHeapify(self.leftChild(pos))
- 
-                
-                else:
-                    self.swap(pos, self.rightChild(pos))
-                    self.minHeapify(self.rightChild(pos))
- 
-    def insert(self, element):
-        if self.size >= self.maxsize :
-            return
-        self.size+= 1
-        self.Heap[self.size] = element
- 
-        current = self.size
- 
-        while self.Heap[current] < self.Heap[self.parent(current)]:
-            self.swap(current, self.parent(current))
-            current = self.parent(current)
- 
- 
-    def minHeap(self):
- 
-        for pos in range(self.size//2, 0, -1):
-            self.minHeapify(pos)
- 
-  
-    def remove(self):
- 
-        popped = self.Heap[self.FRONT]
-        self.Heap[self.FRONT] = self.Heap[self.size]
-        self.size-= 1
-        self.minHeapify(self.FRONT)
-        return popped
 
+
+class SimpleHeap:
+
+
+    def __init__(self):
+        self.arr = [None]
+
+    def push(self, x):
+        arr = self.arr
+        arr.append(x)
+        self.heapify_up(len(arr)-1)
+
+
+    def heapify_up(self, i):
+        arr = self.arr
+        p = int(i / 2)
+
+        while arr[p] < arr[i] and i != 1:
+            arr[p], arr[i] = arr[i], arr[p]
+            i = p
+            p = int(i/2)
+
+    def heapify_down(self):
+        arr = self.arr
+
+        if len(arr) < 2:
+            return
+        i = 1
+        while (i*2) < len(arr):
+            x = i*2
+            if i*2+1 < len(arr):
+                if arr[i*2+1] > arr[i*2]:
+                    x = i*2 + 1
+
+            acted = False
+            if x < len(arr):
+                if arr[x] > arr[i]:
+                    arr[x], arr[i] = arr[i], arr[x]
+                    i = x
+                    acted = True
+            if not acted: break
+
+
+    def pop(self):
+        arr = self.arr
+        if len(arr) == 1:
+            return None
+
+        if len(arr) == 2:
+            return arr.pop()
+
+        ret = arr[1]
+        arr[len(arr)-1], arr[1] = arr[1], arr[len(arr)-1]
+        arr.pop()
+        self.heapify_down()
+        return ret
 ```
 
 ### 2 - fakeuseragent

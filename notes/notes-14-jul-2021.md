@@ -5,7 +5,7 @@
 ```python
 
 
-class SimpleHeap:
+class SimpleMaxHeap:
 
 
     def __init__(self):

@@ -1,5 +1,37 @@
 # 17-jul-2021
 
+### 2 - min stack
+
+stack which also keeps track of current min
+
+```python
+class Node:
+    def __init__(self, val, mn, nxt=None):
+        self.val = val
+        self.mn = mn
+        self.nxt = nxt
+
+class MinStack:
+
+    def __init__(self):
+        self.head = None
+
+    def push(self, x):
+        if not self.head:
+            head = Node(x,x)
+        else:
+            head = Node(x, min(x, self.head.mn), head);
+
+    def pop():
+        head = head.nxt
+
+    def top():
+        return head.val
+
+    def getMin():
+        return head.mn
+```
+
 
 ### 1 - moving items with adjacent swap
 

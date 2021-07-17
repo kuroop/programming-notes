@@ -7,10 +7,11 @@
                    |___/                                                                   |___/
         
 
-[ 1049 ]
+[ 1050 ]
 
 | LINK |
 |------|
+|[Min stack](https://github.com/l0k3ndr/log-of-learning/blob/master/notes/notes-17-jul-2021.md#2---min-stack) |
 |[Moving items with adjacent swap](https://github.com/l0k3ndr/log-of-learning/blob/master/notes/notes-17-jul-2021.md#1---moving-items-with-adjacent-swap) |
 |[Max heap implementation](https://github.com/l0k3ndr/log-of-learning/blob/master/notes/notes-14-jul-2021.md#3---max-heap-implementation) |
 |[Fakeuseragent](https://github.com/l0k3ndr/log-of-learning/blob/master/notes/notes-14-jul-2021.md#2---fakeuseragent) |
